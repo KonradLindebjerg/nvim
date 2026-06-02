@@ -27,6 +27,13 @@ return {
         width = 30,
         side = "left",
       },
+      actions = {
+        open_file = {
+          window_picker = {
+            chars = "ASDFHJKL",
+          },
+        },
+      },
     })
   end,
   keys = {
