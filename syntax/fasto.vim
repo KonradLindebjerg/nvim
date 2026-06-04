@@ -7,7 +7,7 @@ end
 
 syn keyword fastoKeyword fun fn op if then else let in
 syn keyword fastoType int char bool
-syn keyword fastoFunction read write iota replicate map reduce scan
+syn keyword fastoFunction read write iota replicate map reduce scan filter
 
 syn match fastoString "\"\([ -!#-&(-[\]-~]\|\\[\x0-\x7f]\)*\""
 
