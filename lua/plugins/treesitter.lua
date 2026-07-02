@@ -1,20 +1,34 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    branch = "master",
     build = ":TSUpdate",
     event = { "BufReadPost", "BufNewFile" },
+    -- lazy.nvim calls require(main).setup(opts). On the `master` branch the
+    -- setup entrypoint lives in `nvim-treesitter.configs`, not the top-level
+    -- module.
+    main = "nvim-treesitter.configs",
     opts = {
-      ensure_installed = { "lua", "vim", "vimdoc", "c", "c_sharp", "fsharp" },
+      -- `markdown` + `markdown_inline` are required for LSP hover (K): Neovim
+      -- renders the doc float as markdown and highlights it with Treesitter.
+      -- Without them, hover throws "Parser could not be created ... markdown".
+      ensure_installed = {
+        "lua",
+        "vim",
+        "vimdoc",
+        "c",
+        "c_sharp",
+        "fsharp",
+        "python",
+        "markdown",
+        "markdown_inline",
+      },
       highlight = {
         enable = true,
-        -- This ensures we only use Treesitter and don't wait for old Vim regex
+        -- Use only Treesitter; don't also run the old Vim regex highlighter.
         additional_vim_regex_highlighting = false,
       },
       indent = { enable = true },
     },
-    config = function(_, opts)
-      -- MODERN SYNTAX: No '.configs' anymore
-      require("nvim-treesitter").setup(opts)
-    end,
   },
 }

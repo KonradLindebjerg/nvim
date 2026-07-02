@@ -7,7 +7,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     opts = {
-      ensure_installed = { "lua_ls", "clangd", "omnisharp", "fsautocomplete" },
+      ensure_installed = { "lua_ls", "clangd", "omnisharp", "fsautocomplete", "pyright" },
     },
   },
   {
@@ -71,7 +71,7 @@ return {
       })
 
       -- 3. THE 0.11+ SERVER SETUP
-      local servers = { "lua_ls", "clangd", "fsautocomplete", "omnisharp" }
+      local servers = { "lua_ls", "clangd", "fsautocomplete", "omnisharp", "pyright" }
 
       for _, server in ipairs(servers) do
         vim.lsp.config(server, {
